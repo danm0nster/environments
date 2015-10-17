@@ -91,9 +91,9 @@ module.exports = {
     COMPENSATION: 0.25,
 
     timer: {
-        instructions1: 30000, // 300000,
-        instructions2: 30000, // 180000,
-        quiz: 120000,
+        instructions1: 2000, // 30000, // 300000,
+        instructions2: 2000, // 30000, // 180000,
+        quiz: 2000,  // 120000,
         questionnaire: 120000,
         bid: function() {
 	    if (node.game.part == 1 &&
