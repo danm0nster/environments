@@ -52,7 +52,7 @@ module.exports = {
     TIMER: {
 
         instructions: 90000,
-        quiz: 2000,
+        quiz: 90000,
         bid: function() {
             var round;
             round = this.getCurrentGameStage().round;
