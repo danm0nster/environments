@@ -99,7 +99,7 @@ module.exports = {
     //CHOSEN_TREATMENT: function(treatments, roomCounter) {
     //    return treatments[roomCounter % treatments.length];
     //},
-    CHOSEN_TREATMENT: 'blackbox', // singapore',
+    CHOSEN_TREATMENT: 'random', // singapore',
 
     /**
      * ## PLAYER_SORTING

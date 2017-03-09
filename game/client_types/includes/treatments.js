@@ -704,4 +704,4 @@ treatments.endo = {
 treatments.blackbox = treatments.exo_perfect;
 
 // SINGAPORE.
-treatments.singapore = treatments.exo_perfect;
+treatments.standard = treatments.exo_perfect;

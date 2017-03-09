@@ -88,8 +88,8 @@ module.exports = {
 
     treatments: {
 
-        singapore: {
-            instrPage: 'instructions_singapore.html'
+        standard: {
+            instrPage: 'instructions_standard.html'
         },
         blackbox: {
             instrPage: 'instructions_blackbox.html',
