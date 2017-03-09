@@ -316,7 +316,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     'amount than if you put in only a small amount ?',
                 likelyChoices: [
                     'Yes', 'No', 'Other',
-                    [ 'true if&lt;5, false if&gt;5', '5' ]
+                    [ '5', 'true if&lt;5, false if&gt;5' ]
                 ],
                 likelyCorrect: 0
             };
@@ -410,7 +410,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             bid = node.game.correctInputs(validation);
             // Store reference for next round.
             node.game.oldContrib = bid.contribution;
-            node.game.oldDeman = bid.demand;
+            node.game.oldDemand = bid.demand;
             // Send it to server.
             return bid;
         }

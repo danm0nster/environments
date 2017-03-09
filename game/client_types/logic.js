@@ -46,8 +46,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
     // Require treatments file.
     treatments = channel.require(__dirname + '/includes/treatments.js', {
         node: node,
-        settings: settings,
-        dk: dk
+        settings: settings
     }, true);
 
     

@@ -1,6 +1,6 @@
 /**
  * # Treatment conditions for meritocracy game.
- * Copyright(c) 2015 Stefano Balietti
+ * Copyright(c) 2017 Stefano Balietti
  * MIT Licensed
  *
  * Contains helper functions to create Gaussian noise.
@@ -17,7 +17,7 @@ var ngc = require('nodegame-client');
 var channel = module.parent.exports.channel;
 var node = module.parent.exports.node;
 var settings = module.parent.exports.settings;
-var dk = module.parent.exports.dk;
+// var dk = module.parent.exports.dk;
 
 var SUBGROUP_SIZE = settings.SUBGROUP_SIZE;
 var treatment = settings.treatmentName;
@@ -370,7 +370,7 @@ function finalizeRound(currentStage, bars,
             playerPayoff = getPayoff(bars, positionInNoisyRank);
             
             // Updating the player database with the current payoff.
-            // code = dk.codes.id.get(pId);
+            // code = dk.codes.id.get(pId); // not available.
             code = channel.registry.getClient(pId);
 
             if (!code) {

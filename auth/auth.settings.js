@@ -1,6 +1,6 @@
 /**
  * # Authorization settings
- * Copyright(c) {YEAR} {AUTHOR} <{AUTHOR_EMAIL}>
+ * Copyright(c) Stefano Balietti
  * MIT Licensed
  *
  * http://www.nodegame.org
@@ -13,7 +13,7 @@ module.exports = {
      *
      * If TRUE, authorization files will be imported and checked
      */
-    enabled: true, // [true, false] Default: TRUE.
+    enabled: false, // [true, false] Default: TRUE.
 
     /**
      * ## mode

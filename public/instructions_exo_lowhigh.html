@@ -51,13 +51,13 @@
         </p>
       </div>
     </div>
-    <p>If you understood the instructions correctly press the button to proceed to the game. </p>
+    <p>If you understood the instructions correctly press the Done button to proceed to the game. </p>
   </div>
-  <input type="button" id="read" value="Proceed to the game" class="btn btn-lg btn-primary" align="center" />
 </body>
 <script type="text/javascript">
-  var variance;
-  if (parent.node.env('roomType') === 'exo_low') {
+  var variance, s;
+  s = parent.node.game.settings;
+  if (s.treatmentName === 'exo_low') {
     variance = document.getElementById('variance');
     variance.innerHTML = 4;
   }
