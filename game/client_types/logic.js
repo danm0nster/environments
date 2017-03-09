@@ -28,14 +28,9 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
     // instances of game logics.
     var counter = settings.SESSION_ID;
 
-    // Group names.
-    var groupNames = settings.GROUP_NAMES;
-
     var DUMP_DIR, DUMP_DIR_JSON, DUMP_DIR_CSV;
-    var ngdb, mdb;
 
     var treatments;
-    var client;
     var nbRequiredPlayers;
 
     // Preparing storage directories.
@@ -154,11 +149,6 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
                 code.win =  Number((code.win || 0) / EXCHANGE_RATE).toFixed(2);
                 code.win = parseFloat(code.win, 10);
-
-                // TODO. Improve this.
-                if (settings.auth === 'MTURK') {
-                    dk.checkOut(accesscode, exitcode, code.win);
-                }
 
                 channel.registry.checkOut(p.id);
 
