@@ -1,7 +1,13 @@
 {
   "name": "meritocracy",
+<<<<<<< HEAD
   "description": "Plays a public-goods game with assortativity matching with nodegame",
   "version": "0.1.0",
+=======
+  "alias": "experiment",
+  "description": "Public-good game with meritocratic matching in nodegame",
+  "version": "0.2.0",
+>>>>>>> public-goods
   "author": {
     "name": "Stefano Balietti",
     "email": "info@nodegame.org",
@@ -19,6 +25,10 @@
 ,
   "engines": {
     "node": "*",
+<<<<<<< HEAD
     "nodegame": ">= 3.0.0"
+=======
+    "nodegame": ">= 0.9.1"
+>>>>>>> public-goods
   }
 }

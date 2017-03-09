@@ -1,0 +1,87 @@
+<!doctype html>
+<title>Quiz</title>
+<link rel="stylesheet" type="text/css" href="css/quiz.css">
+<link rel="stylesheet" href="css/jqueryui.min.css" />
+<link rel="stylesheet" href="css/bootstrap.min.css" />
+<body>
+
+  <div id="container_quiz">
+    <h1>Before starting the game answer the following questions:</h1>
+    
+    <div id="quiz"> 
+      <dl>
+
+        <dt><strong>Q.1</strong></dt>        
+        <dd>
+          <span id="coinsEveryRound_result" class="quiz_result"></span>
+          <form name="coinsEveryRound" id="coinsEveryRound">
+            <p> How many coins do you get every of the 20 rounds ? </p>
+            <p>
+              <input type="radio" name="coinsEveryRound" value="20"> 20<br>
+              <input type="radio" name="coinsEveryRound" value="10"> 10<br>
+              <input type="radio" name="coinsEveryRound" value="5"> 5<br>
+              <input type="radio" name="coinsEveryRound" value="other"> Other / not clear from instructions
+            </p>
+          </form>
+        </dd>
+
+        <dt><strong>Q.2</strong></dt>        
+        <dd>
+          <span id="lowestPayement_result" class="quiz_result"></span>
+          <form name="lowestPayement" id="lowestPayement">
+            <p> If you put 5 in the group account, what is the lowest payment you are guaranteed from this round ? </p>
+            <p>
+              <input type="radio" name="lowestPayement" value="5"> 5<br>
+              <input type="radio" name="lowestPayement" value="7.5"> 7.5<br>
+              <input type="radio" name="lowestPayement" value="10"> 10<br>
+              <input type="radio" name="lowestPayement" value="other"> Other / not clear from instructions
+            </p>
+          </form>
+        </dd>
+
+        <dt><strong>Q.3</strong></dt>        
+        <dd>
+          <span id="leastGuarantee_result" class="quiz_result"></span>
+          <form name="leastGuarantee" id="leastGuarantee">
+            <p> If you put 5 in the group account, and all others do the same, how much are you guaranteed from this round ? </p>
+            <p>
+              <input type="radio" name="leastGuarantee" value="7.5"> 7.5<br>
+              <input type="radio" name="leastGuarantee" value="15"> 15<br>
+              <input type="radio" name="leastGuarantee" value="20"> 20<br>
+              <input type="radio" name="leastGuarantee" value="other"> Other / not clear from instructions
+            </p>
+          </form>
+        </dd>
+
+        <dt><strong>Q.4</strong></dt>        
+        <dd>
+          <span id="likeliness_result" class="quiz_result"></span>
+          <form name="likeliness" id="likeliness">
+            <p> Are you more likely to be matched in a group with other high-contributers if you also put in a large amount than if you put in only a small amount ? </p>
+            <p>
+              <input type="radio" name="likeliness" value="1"> Yes<br>
+              <input type="radio" name="likeliness" value="0"> No<br>
+              <input type="radio" name="likeliness" value="condition"> true if&lt;5, false if&gt;5<br>
+              <input type="radio" name="likeliness" value="other"> Other / not clear from instructions
+            </p>
+          </form>
+        </dd>
+
+      </dl>
+      <div id="done_box">
+        <button onclick='javascript:QUIZ.checkAnswers(this);' id="submitQuiz" class="btn btn-primary">Click here to check your answers, and start the game. <br>Correct answers <span id="answers_counter">0 / 4</span></button>
+      </div>
+    </div>
+  </div>
+  
+</div>
+</body>
+<script src="/meritocracy/js/quiz.js"></script>
+<script type="text/javascript">
+  QUIZ = QUIZ({
+    coinsEveryRound: 20,
+    lowestPayement: 7.5,
+    leastGuarantee: 15,
+    likeliness: 0
+  });
+</script>

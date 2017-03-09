@@ -1,0 +1,60 @@
+<!doctype html>
+<title>INSTRUCTIONS</title>
+<link rel="stylesheet" href="css/jqueryui.min.css" />
+<link rel="stylesheet" href="css/bootstrap.min.css" />
+<link rel="stylesheet" href="css/instructions.css" />
+<body>
+  <div id="central-container">
+    <h1>Instructions. Please read them carefully.</h1>
+    <div id="instructions">
+      <div id="random">
+        <p>Welcome to our
+        game! <span id="players-count">X</span> people, that is
+        you and <span id="players-count-minus-1">X-1</span> others,
+        have joined us.</p>
+
+        <p><strong>Your decision.</strong><br /> You will
+        receive <strong>20</strong> coins per round
+        for <span id="rounds-count">X</span> rounds. Each round, you
+        will have to choose how many coins to put directly into your
+        personal account, and how many coins to put into a group
+        account.</p>
+
+        <p><strong>Return from personal account.</strong><br /> Each
+        coin that you put into your personal account each round goes
+        one-to-one towards your final earnings in the game.</p>
+
+        <p><strong>Return from group account.</strong><br /> Each coin
+        that you and the other participants put into the group account
+        will be summed up, and you will receive half of this sum.</p>
+
+        <table class="table table-striped" style="max-width: 300px">
+          <thead>
+            <tr>
+              <th>Total number of coins in group account</th><th>Your return</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>0</td><td>0</td></tr>
+            <tr><td>10</td><td>5</td></tr>
+            <tr><td>15</td><td>7.5</td></tr>
+            <tr><td>28</td><td>14</td></tr>
+            <tr><td>...</td><td>...</td></tr>
+          </tbody>
+          <tfoot>
+            <tr><th>Any amount</th><th>Half of that amount</th></tr>
+          </tfoot>
+        </table>
+
+        <p><strong>Total return.</strong><br />The total return for
+        you in this game is equal to the total amount of coins earned
+        over all the rounds of the game.</p>
+
+      </div>
+    </div>
+
+    <p>If you understood the instructions correctly press the Done
+    button to proceed to the game. </p>
+  </div>
+  
+</body>

@@ -1,0 +1,88 @@
+<!doctype html>
+<title>Quiz</title>
+<link rel="stylesheet" type="text/css" href="/meritocracy/html/css/quiz.css">
+<link rel="stylesheet" href="/meritocracy/html/css/jqueryui.min.css" />
+<link rel="stylesheet" href="/meritocracy/html/css/bootstrap.min.css" />
+
+<body>
+
+  <div id="container_quiz">
+    <h1>Before starting the game answer the following questions:</h1>
+    
+    <div id="quiz"> 
+      <dl>
+
+        <dt><strong>Q.1</strong></dt>        
+        <dd>
+          <span id="coinsEveryRound_result" class="quiz_result"></span>
+          <form name="coinsEveryRound" id="coinsEveryRound">
+            <p> How many coins do you get every of the 20 rounds ? </p>
+            <p>
+              <input type="radio" name="coinsEveryRound" value="20"> 20<br>
+              <input type="radio" name="coinsEveryRound" value="10"> 10<br>
+              <input type="radio" name="coinsEveryRound" value="5"> 5<br>
+              <input type="radio" name="coinsEveryRound" value="other"> Other / not clear from instructions
+            </p>
+          </form>
+        </dd>
+
+        <dt><strong>Q.2</strong></dt>        
+        <dd>
+          <span id="lowestPayement_result" class="quiz_result"></span>
+          <form name="lowestPayement" id="lowestPayement">
+            <p> If you contribute 5 and demand 10, which of the following players is compatible with you ? </p>
+            <p>
+              <input type="radio" name="lowestPayement" value="510"> Contributes 5, demand 10<br>
+              <input type="radio" name="lowestPayement" value="105"> Contributes 10, demand 5<br>
+              <input type="radio" name="lowestPayement" value="1010"> Contributes 10, demand 10<br>
+              <input type="radio" name="lowestPayement" value="0"> Contributes 0, demand 0<br>
+            </p>
+          </form>
+        </dd>
+
+        <dt><strong>Q.3</strong></dt>        
+        <dd>
+          <span id="leastGuarantee_result" class="quiz_result"></span>
+          <form name="leastGuarantee" id="leastGuarantee">
+            <p> If you contribute 10 and demand 10, can you end up in a group with someone contributing zero ? </p>
+            <p>
+              <input type="radio" name="leastGuarantee" value="0"> No<br>
+              <input type="radio" name="leastGuarantee" value="1"> Yes<br>
+              <input type="radio" name="leastGuarantee" value="random"> It is random<br>
+              <input type="radio" name="leastGuarantee" value="other"> Other / not clear from instructions
+            </p>
+          </form>
+        </dd>
+
+        <dt><strong>Q.4</strong></dt>        
+        <dd>
+          <span id="likeliness_result" class="quiz_result"></span>
+          <form name="likeliness" id="likeliness">
+            <p> Keep all the other contributions and demand levels just by demanding more ? </p>
+            <p>
+              <input type="radio" name="leastGuarantee" value="0"> No<br>
+              <input type="radio" name="leastGuarantee" value="1"> Yes<br>
+              <input type="radio" name="leastGuarantee" value="random"> It is random<br>
+              <input type="radio" name="leastGuarantee" value="other"> Other / not clear from instructions
+            </p>
+          </form>
+        </dd>
+
+      </dl>
+      <div id="done_box">
+        <button onclick='javascript:QUIZ.checkAnswers(this);' id="submitQuiz" class="btn btn-primary">Click here to check your answers, and start the game. <br>Correct answers <span id="answers_counter">0 / 4</span></button>
+      </div>
+    </div>
+  </div>
+  
+</div>
+</body>
+<script src="/meritocracy/js/quiz.js"></script>
+<script type="text/javascript">
+    QUIZ = QUIZ({
+        coinsEveryRound: 20,
+        lowestPayement: 105,
+        leastGuarantee: 1,
+        likeliness: 0
+    });
+</script>
