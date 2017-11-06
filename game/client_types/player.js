@@ -36,6 +36,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         this.visualRound = node.widgets.append('VisualRound', header);
         this.visualTimer = node.widgets.append('VisualTimer', header);
         this.doneButton = node.widgets.append('DoneButton', header);
+        this.moneyTalks = node.widgets.append('MoneyTalks', header), {currency: 'ECU'};
 
         // Check if treatment is Endo.
         this.isEndo = function() {
@@ -431,6 +432,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         W.setInnerHTML('yourOldDemand', node.game.oldDemand);
                     }
 
+                    this.moneyTalks.update(msg.data[2]);
                     this.updateResults(barsValues);
                 });
             });
