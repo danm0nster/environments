@@ -421,7 +421,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         cb: function () {
             W.loadFrame(node.game.settings.resultsPage, function() {
                 node.on.data('results', function(msg) {
-                    var treatment, barsValues;
+                    var treatment, barsValues, payOff;
 
                     console.log('Received results.');
 
@@ -432,7 +432,8 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         W.setInnerHTML('yourOldDemand', node.game.oldDemand);
                     }
 
-                    this.moneyTalks.update(msg.data[2]);
+                    payOff = msg.data[2];
+                    this.moneyTalks.update(payOff);
                     this.updateResults(barsValues);
                 });
             });
