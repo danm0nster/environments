@@ -287,7 +287,8 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
                 W.setInnerHTML('players-count', n);
                 W.setInnerHTML('players-count-minus-1', (n-1));
-                W.setInnerHTML('rounds-count', s.REPEAT);
+                // Was: W.setInnerHTML('rounds-count', s.REPEAT);
+                W.setInnerHTML('rounds-count', 'several');
             });
 
             console.log('Instructions');
