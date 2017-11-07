@@ -144,7 +144,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
         // This function is called to create the bars.
         this.updateResults = function(barsValues) {
-            var group, player, i, j, div, subdiv, color, save;
+            var group, player, i, j, div, subdiv, color, save, groupPayOff;
             var barsDiv, showDemand;
             var text, groupHeader, groupHeaderText, groupNames;
             var payoffSpan, bars;
@@ -174,7 +174,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 div = document.createElement('div');
                 div.classList.add('groupContainer');
                 groupHeader = document.createElement('h4');
-                groupHeaderText = 'Group ' + groupNames[i];
+                groupHeaderText = 'Your group:' ; // + groupNames[i];
                 if (showDemand) {
                     groupHeaderText += barsValues[3][i] ? ' (' : ' (not ';
                     groupHeaderText += 'compatible)';
@@ -222,7 +222,9 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
             // How many coins player put in personal account.
             save = COINS - node.game.oldContrib;
-            payoffSpan.innerHTML = save + ' + ' + (barsValues[2] - save) +
+            // Round pay off from group account to two decimals
+            groupPayOff = Math.round((barsValues[2] - save) * 100) / 100;
+            payoffSpan.innerHTML = save + ' + ' + (groupPayOff) +
                 ' = ' + node.game.oldPayoff;
         };
 
@@ -388,6 +390,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
     stager.extendStep('bid', {
         cb: function() {
             W.loadFrame(node.game.settings.bidderPage, function() {
+                W.setInnerHTML('initialCoins', node.game.settings.INITIAL_COINS);
                 // Show summary previous round.
                 node.game.displaySummaryPrevRound();
 
