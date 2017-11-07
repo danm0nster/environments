@@ -22,7 +22,7 @@ module.exports = {
     // Session counter.
     SESSION_ID: 1,
 
-    // Numnber of game rounds repetitions.
+    // Number of game rounds repetitions.
     // TODO: if the value is changed the QUIZ page needs to be updated.
     REPEAT: 4,
 
@@ -40,8 +40,10 @@ module.exports = {
     NOISE_LOW: 2,
 
     // Payment settings. *
-    GROUP_ACCOUNT_DIVIDER: 2,
-    INITIAL_COINS: 20,
+    // TODO: Use SUBGROUP_SIZE instead of GROUP_ACCOUNT_DIVIDER
+    GROUP_ACCOUNT_DIVIDER: 4,
+    MARGINAL_PER_CAPITA_RETURN: 1.6,
+    INITIAL_COINS: 100,
 
     // Divider ECU / DOLLARS *
     EXCHANGE_RATE: 266,
@@ -85,38 +87,15 @@ module.exports = {
     bidderPage:  'bidder.html',
     resultsPage: 'results.html',
     quizPage: 'quiz_random.html',
+    instrPage: 'instructions_standard.html',
 
     treatments: {
 
-        standard: {
-            instrPage: 'instructions_standard.html'
+        HiLo: {
+            trustOrder: ['Hi', 'Lo']
         },
-        blackbox: {
-            instrPage: 'instructions_blackbox.html',
-            bidderPage: 'bidder_blackbox.html',
-            instructionsPage: 'instructions_blackbox.html',
-            quizPage: 'quiz_blackbox.html'
-        },
-        endo: {
-            instrPage: 'instructions_endo.html',
-            bidderPage: 'bidder_endo.html',
-            resultsPage: 'results_endo.html',
-            quizPage: 'quiz_endo.html'
-        },
-        random: {
-            instrPage: 'instructions_random.html'            
-        },
-        exo_low: {
-            instrPage: 'instructions_exo_lowhigh.html',
-            quizPage: 'quiz_exo_lowhigh.html'
-        },
-        exo_high: {
-            instrPage: 'instructions_exo_lowhigh.html',
-            quizPage: 'quiz_exo_lowhigh.html'
-        },
-        exo_perfect: {
-            instrPage: 'instructions_exo_perfect.html',
-            quizPage: 'quiz_exo_perfect.html'
+        LoHi: {
+            trustOrder: ['Lo', 'Hi']
         }
     }
 };
