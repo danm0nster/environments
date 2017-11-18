@@ -86,7 +86,7 @@ module.exports = {
     // Custom pages depending on treatment.
     bidderPage:  'bidder.html',
     resultsPage: 'results.html',
-    quizPage: 'quiz_random.html',
+    quizPage: 'quiz.html',
     instrPage: 'instructions_standard.html',
 
     treatments: {
