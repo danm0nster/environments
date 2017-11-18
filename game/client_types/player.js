@@ -144,7 +144,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
         // This function is called to create the bars.
         this.updateResults = function(barsValues) {
-            var group, player, i, j, div, subdiv, color, save, groupPayOff;
+            var group, player, i, j, div, subdiv, color, save, groupPayOff, oldPayOff;
             var barsDiv, showDemand;
             var text, groupHeader, groupHeaderText, groupNames;
             var payoffSpan, bars;
@@ -199,7 +199,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     // This is the DIV actually containing the bar
                     subdiv = document.createElement('div');
                     div.appendChild(subdiv);
-                    bars.createBar(subdiv, player[0], 20, color[0], text);
+                    bars.createBar(subdiv, player[0], COINS, color[0], text);
 
                     // TODO: adapt 'YOU'.
                     if (showDemand) {
@@ -209,7 +209,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         if (barsValues[1][0] === i && barsValues[1][1] === j) {
                             text = 'YOU <-----';
                         }
-                        bars.createBar(subdiv, player[1], 20, color[1], text);
+                        bars.createBar(subdiv, player[1], COINS, color[1], text);
                     }
                     // Was here
                     // div.appendChild(subdiv);
@@ -224,8 +224,9 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             save = COINS - node.game.oldContrib;
             // Round pay off from group account to two decimals
             groupPayOff = Math.round((barsValues[2] - save) * 100) / 100;
+            oldPayOff = Math.round(node.game.oldPayoff*100) / 100;
             payoffSpan.innerHTML = save + ' + ' + (groupPayOff) +
-                ' = ' + node.game.oldPayoff;
+                ' = ' + oldPayOff;
         };
 
         this.displaySummaryPrevRound = function() {
