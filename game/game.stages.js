@@ -20,6 +20,12 @@ module.exports = function(stager, settings) {
         .step('bid')
         .step('results')
     
+        .repeat('game AS game_with_bots', settings.REPEAT)
+    
+        .repeat('game AS game_with_bots2', settings.REPEAT)
+
+        .repeat('game AS game_final', settings.REPEAT)
+    
         .next('questionnaire')
     
         .next('end')

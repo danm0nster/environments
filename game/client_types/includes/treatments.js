@@ -49,6 +49,16 @@ function computeGroupAccount(prev, curr) {
     return prev + curr[0];
 }
 
+// Sort by group and by contribution.
+function sortContributionsDan(c1, c2) {
+    if (c1.group < c2.group) return -1;
+    if (c1.group > c2.group) return 1;
+    if (c1.contribution > c2.contribution) return -1;
+    if (c1.contribution < c2.contribution) return 1;
+    if (Math.random() <= 0.5) return -1;
+    return 1;
+}
+
 // If two contributions are exactly the same, then they are randomly ordered.
 function sortContributions(c1, c2) {
     if (c1.contribution > c2.contribution) return -1;
@@ -124,6 +134,47 @@ function doGroupMatching(sortedContribs) {
         bars: bars
     };
 }
+
+/**
+ * Splits a sorted array of contributions objects into four groups
+ *
+ * Computes the ranking, i.e. the list of player ids from top to bottom.
+ *
+ * @param {array} ranking The sorted array of contribution objects
+ * @return {object} Object containing the ranking and groups
+ */
+function doGroupMatchingDan(sortedContribs) {
+    var i, len, groups, entry, ranking, bars;
+    var gId, curGId;
+    len = sortedContribs.length;
+    groups = [];
+    ranking = [];
+    bars = [];
+    gId = -1;
+    for (i = 0; i < len; i++) {
+        entry = sortedContribs[i];
+        // Group can be null if everybody is in the same group.
+        curGId = entry.group || 0;
+        if (gId !== curGId) {
+            gId = curGId;
+            groups[gId] = [];
+            bars[gId] = [];
+        }
+        // This replaces the id with a name.
+        // but it is not necessary.
+        entry.group = groupNames[gId];
+        groups[gId].push(entry);
+        ranking.push(entry.player);
+        bars[gId].push([entry.contribution, entry.demand]);
+    }
+    return {
+        groups: groups,
+        ranking: ranking,
+        bars: bars
+    };
+}
+
+
 // Group Matching for ENDO condition
 function endoGroupMatching(sortedContribs) {
     var i, j;
@@ -326,6 +377,10 @@ function createNoise(receivedData, variance) {
  */
 function sendPlayersResults(pid, bars, position, payoff, compatibility) {
     var finalBars;
+
+    // Skip bots.
+    if (pid.substr(0, 8) === 'autobot_') return;
+    
     finalBars = [ bars, position, payoff, compatibility ];
     // Store it here in case of disconnection.
     node.game.savedResults[pid] = finalBars;
@@ -356,7 +411,7 @@ function finalizeRound(currentStage, bars,
 
 //     console.log(noisyGroups.length);
 //     console.log('!!!!!');
-
+debugger
     // Save the results for each player, and notify him.
     i = -1, len = noisyGroups.length;
     for (; ++i < len;) {
@@ -394,7 +449,7 @@ function finalizeRound(currentStage, bars,
 // EXO PERFECT.
 treatments.exo_perfect = {
 
-    sendResults: function () {
+    sendResults: function(stageRepetition) {
         var currentStage, previousStage,
         receivedData,
         sortedContribs,
@@ -419,6 +474,8 @@ treatments.exo_perfect = {
                 ++newSize;
             }
             o[c.player] = c;
+            // Add group (might be null the first repetition).
+            c.group = node.game.pl.id.get(c.player).group;
         }
         if (newSize !== receivedData.length) {
             var newDb = [];
@@ -431,14 +488,13 @@ treatments.exo_perfect = {
             receivedData.importDB(newDb);
         }
 
-        // If a player submitted twice with reconnections.
-
+        // Sort by group and player.
         sortedContribs = receivedData
-            .sort(sortContributions)
+            .sort(sortContributionsDan)
             .fetch();
-
+debugger
         // Original Ranking (without noise).
-        matching = doGroupMatching(sortedContribs);
+        matching = doGroupMatchingDan(sortedContribs);
 
         // Array of sorted player ids, from top to lowest contribution.
         ranking = matching.ranking;
