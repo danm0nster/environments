@@ -34,7 +34,6 @@ function averageContribution(pv, cv) {
     return pv + cv.contribution;
 }
 
-
 function computeGroupAccount(prev, curr) {
     return prev + curr[0];
 }
@@ -210,7 +209,6 @@ function finalizeRound(currentStage, bars, groupStats, groups, ranking) {
             storePayoffInRegistry(pId, playerPayoff);
             
             sendPlayersResults(pId, bars, positionInRank, playerPayoff);
-
         }
     }
 }

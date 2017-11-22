@@ -144,9 +144,10 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         db = node.game.memory;
         curStage = node.game.getCurrentGameStage()
         
-        // Important! If nGroups !== 4 change accordingly.
-        i = -1, nGroups = node.game.settings.SUBGROUP_SIZE;
+        i = -1;
+        nGroups = node.game.pl.size();
         for ( ; ++i < nGroups ; ) {
+            // Important! If SUBGROUP_SIZE !== 4 change accordingly.
             // 3 Bots per group.
             db.insert({
                 group: i,

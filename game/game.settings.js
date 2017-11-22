@@ -26,7 +26,10 @@ module.exports = {
     // Minimum number of players that must be always connected.
     MIN_PLAYERS: 4,
 
-    GROUP_NAMES: ['1', '2', '3', '4'],
+    GROUP_NAMES: [
+        '1', '2', '3', '4', '5', '6', '7', '8',
+        '9', '10', '11', '12', '13', '14', '15', '16'
+    ],
 
     // How many player in each group. *
     SUBGROUP_SIZE: 4,
