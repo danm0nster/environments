@@ -87,17 +87,17 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             this.stageRepetition = stageRepetition;
 
             if (stageRepetition === 0 || stageRepetition === 2) {
+                this.playWithBots = false;
                 groupWithPlayers();
             }
             else if (stageRepetition === 1 || stageRepetition === 3) {
+                this.playWithBots = true;
                 groupWithBots();
             }
         },
         cb: function() {
             // Add bots contributions.
-            if (this.stageRepetition === 1 || this.stageRepetition === 3) {
-                addBotContributions();
-            }
+            if (this.playWithBots) addBotContributions();            
         }
     });
 
@@ -144,8 +144,8 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         db = node.game.memory;
         curStage = node.game.getCurrentGameStage()
         
-        // Change nGroups accordingly (maybe move in settings).
-        i = -1, nGroups = 4;
+        // Important! If nGroups !== 4 change accordingly.
+        i = -1, nGroups = node.game.settings.SUBGROUP_SIZE;
         for ( ; ++i < nGroups ; ) {
             // 3 Bots per group.
             db.insert({
@@ -176,13 +176,12 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
     }
 
     function groupWithPlayers() {
-        var counter, PGROUP_SIZE, gid;
+        var counter, gid;
         gid = -1;
         counter = -1
-        PGROUP_SIZE = 4;
         node.game.pl.each(function(p) {
             // 4 Players together.
-            if (++counter % PGROUP_SIZE === 0) gid++;
+            if (++counter % node.game.settings.SUBGROUP_SIZE === 0) gid++;
             p.group = gid;
         });
     }

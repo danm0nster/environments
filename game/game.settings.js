@@ -31,10 +31,6 @@ module.exports = {
     // How many player in each group. *
     SUBGROUP_SIZE: 4,
 
-    // Noise standard deviation. High and low "meritocracy".
-    NOISE_HIGH: 1.4142,
-    NOISE_LOW: 2,
-
     // Payment settings. *
     GROUP_ACCOUNT_DIVIDER: 2,
     INITIAL_COINS: 20,
@@ -74,29 +70,6 @@ module.exports = {
         exo_perfect: {
             instrPage: 'instructions_exo_perfect.html',
             quizPage: 'quiz_exo_perfect.html'
-        },
-        blackbox: {
-            instrPage: 'instructions_blackbox.html',
-            bidderPage: 'bidder_blackbox.html',
-            instructionsPage: 'instructions_blackbox.html',
-            quizPage: 'quiz_blackbox.html'
-        },
-        endo: {
-            instrPage: 'instructions_endo.html',
-            bidderPage: 'bidder_endo.html',
-            resultsPage: 'results_endo.html',
-            quizPage: 'quiz_endo.html'
-        },
-        random: {
-            instrPage: 'instructions_random.html'            
-        },
-        exo_low: {
-            instrPage: 'instructions_exo_lowhigh.html',
-            quizPage: 'quiz_exo_lowhigh.html'
-        },
-        exo_high: {
-            instrPage: 'instructions_exo_lowhigh.html',
-            quizPage: 'quiz_exo_lowhigh.html'
         }
     }
 };

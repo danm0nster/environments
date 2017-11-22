@@ -23,7 +23,6 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
         COINS = node.game.settings.INITIAL_COINS;
         node.game.oldContrib = null;
-        node.game.oldDemand = null;
         node.game.oldPayoff = null;
 
         // Setup page: header + frame.
@@ -34,35 +33,23 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         this.visualRound = node.widgets.append('VisualRound', header);
         this.visualTimer = node.widgets.append('VisualTimer', header);
         this.doneButton = node.widgets.append('DoneButton', header);
-
-        // Check if treatment is Endo.
-        this.isEndo = function() {
-            return node.game.settings.treatmentName === "endo";
+        this.isValidContribution = function(n) {
+            return false !== J.isInt(n, -1, (COINS + 1));
         };
-
-        // Valid Bid and Demand.
-        this.isValidDemand = this.isValidContribution = function(n) {
-            return false !== JSUS.isInt(n, -1, (COINS + 1));
-        };
-
+        
         // Takes in input the results of _checkInputs_ and correct eventual
         // mistakes. If in the first round a random value is chosen, otherwise
         // the previous decision is repeated. It also updates the screen.
         this.correctInputs = function(checkResults) {
-            var contrib, demand;
+            var contrib;
             var errorC, errorD;
 
             if (checkResults.success) {
                 contrib = parseInt(W.getElementById('contribution').value, 10);
-
-                if (node.game.isEndo()) {
-                    demand = parseInt(W.getElementById('demand').value, 10);
-                }
             }
             else {
 
                 if (checkResults.errContrib) {
-
                     if (!node.game.oldContrib) {
                         contrib = JSUS.randomInt(-1, 20);
                     }
@@ -74,34 +61,18 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     W.getElementById('divErrors').appendChild(errorC);
                     W.getElementById('contribution').value = contrib;
                 }
-
-                // In ENDO we check the demand too.
-                if (checkResults.errDemand) {
-
-                    if (!node.game.oldDemand) {
-                        demand = JSUS.randomInt(-1, 20);
-                    }
-                    else {
-                        demand = node.game.oldDemand;
-                    }
-                    errorD = document.createElement('p');
-                    errorD.innerHTML = 'Your demand was set to ' + demand;
-                    W.getElementById('divErrors').appendChild(errorD);
-                    W.getElementById('demand').value = demand;
-                }
             }
 
             return {
-                contribution: contrib,
-                demand: demand
+                contribution: contrib
             };
         };
 
-        // Retrieves and checks the current input for contribution, and for
-        // demand (if requested). Returns an object with the results of the
+        // Retrieves and checks the current input for contribution.
+        // Returns an object with the results of the
         // validation. It also displays a message in case errors are found.
         this.checkInputs = function() {
-            var contrib, demand;
+            var contrib;
             var divErrors, errorC, errorD;
 
             divErrors = W.getElementById('divErrors');
@@ -119,30 +90,16 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 divErrors.appendChild(errorC);
             }
 
-            // In ENDO we check the demand too.
-            if (node.game.isEndo()) {
-
-                demand = W.getElementById('demand').value;
-
-                if (!node.game.isValidDemand(demand)) {
-                    errorD = document.createElement('p');
-                    errorD.innerHTML = 'Invalid demand. ' +
-                        'Please enter a number between 0 and ' + COINS;
-                    divErrors.appendChild(errorD);
-                }
-            }
-
             return {
                 success: !(errorC || errorD),
-                errContrib: !!errorC,
-                errDemand: !!errorD
+                errContrib: !!errorC
             };
         };
 
         // This function is called to create the bars.
         this.updateResults = function(barsValues) {
             var group, player, i, j, div, subdiv, color, save;
-            var barsDiv, showDemand;
+            var barsDiv;
             var text, groupHeader, groupHeaderText, groupNames;
             var payoffSpan, bars;
 
@@ -150,14 +107,10 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             // 0: array: contr, demand
             // 1: array: group, position in group
             // 2: payoff
-            // 3: array: groups are compatible or not (only endo)
 
             groupNames = node.game.settings.GROUP_NAMES;
 
-            showDemand = node.game.isEndo();
-
             console.log(barsValues);
-            console.log(showDemand);
 
             barsDiv = W.getElementById('barsResults');
             payoffSpan = W.getElementById('payoff');
@@ -172,10 +125,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 div.classList.add('groupContainer');
                 groupHeader = document.createElement('h4');
                 groupHeaderText = 'Group ' + groupNames[i];
-                if (showDemand) {
-                    groupHeaderText += barsValues[3][i] ? ' (' : ' (not ';
-                    groupHeaderText += 'compatible)';
-                }
+                
                 groupHeader.innerHTML = groupHeaderText;
                 barsDiv.appendChild(div);
                 div.appendChild(groupHeader);
@@ -185,12 +135,12 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
                     // It is me?
                     if (barsValues[1][0] === i && barsValues[1][1] === j) {
-                        color = [undefined, '#9932CC'];
+                        color = [ undefined, '#9932CC' ];
                         text = ' YOU <img src="imgs/arrow.jpg" ' +
                             'style="height:15px;"/>';
                     }
                     else {
-                        color = ['#DEB887', '#A52A2A'];
+                        color = [ '#DEB887', '#A52A2A' ];
                         text = '';
                     }
 
@@ -198,22 +148,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     subdiv = document.createElement('div');
                     div.appendChild(subdiv);
                     bars.createBar(subdiv, player[0], 20, color[0], text);
-
-                    // TODO: adapt 'YOU'.
-                    if (showDemand) {
-                        subdiv.classList.add('playerContainer');
-                        text = '';
-                        // It is me?
-                        if (barsValues[1][0] === i && barsValues[1][1] === j) {
-                            text = 'YOU <-----';
-                        }
-                        bars.createBar(subdiv, player[1], 20, color[1], text);
-                    }
-                    // Was here
-                    // div.appendChild(subdiv);
                 }
-                // Was here
-                // barsDiv.appendChild(div);
             }
 
             node.game.oldPayoff = +barsValues[2]; // final payoff
@@ -240,10 +175,6 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 W.setInnerHTML('yourOldContrib', node.game.oldContrib);
                 W.setInnerHTML('yourReturn', groupReturn);
                 W.setInnerHTML('yourPayoff', node.game.oldPayoff);
-
-                if (node.game.isEndo()) {
-                    W.setInnerHTML('yourOldDemand', node.game.oldDemand);
-                }
             }
         };
         
@@ -376,9 +307,8 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             // Clear previous errors.
             W.setInnerHTML('divErrors', '');
 
-            // Clear contribution and demand inputs.
+            // Clear contribution input.
             W.getElementById('contribution').value = '';
-            if (node.game.isEndo()) W.getElementById('demand').value = '';
             
             console.log('Meritocracy: bid page.');
         },
@@ -392,7 +322,6 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             bid = node.game.correctInputs(validation);
             // Store reference for next round.
             node.game.oldContrib = bid.contribution;
-            node.game.oldDeman = bid.demand;
             // Send it to server.
             return bid;
         }
@@ -408,10 +337,6 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
                 barsValues = msg.data;
                 treatment = node.env('roomType');
-
-                if (treatment === 'endo') {
-                    W.setInnerHTML('yourOldDemand', node.game.oldDemand);
-                }
 
                 this.updateResults(barsValues);
             });
@@ -466,7 +391,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 title: false,
                 feedback: false,
                 exitCode: false,
-                email: { errString: 'Please enter a valid email and retry' }
+                email: false
             }
         }
     });
