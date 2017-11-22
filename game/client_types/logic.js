@@ -85,17 +85,17 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             stageRepetition = curStage.stage - node.game.firstStage;
             // Save a reference, so it is accessible by other functions.
             this.stageRepetition = stageRepetition;
-debugger
+
             if (stageRepetition === 0 || stageRepetition === 2) {
                 groupWithPlayers();
             }
-            else if (stageRepetition === 1 || stageRepetion === 3) {
+            else if (stageRepetition === 1 || stageRepetition === 3) {
                 groupWithBots();
             }
         },
         cb: function() {
             // Add bots contributions.
-            if (this.stageRepetition === 1 || this.stageRepetition === 2) {
+            if (this.stageRepetition === 1 || this.stageRepetition === 3) {
                 addBotContributions();
             }
         }
@@ -167,7 +167,7 @@ debugger
             db.insert({
                 group: i,
                 contribution: J.randomInt(-1, 20),
-                player: 'autobot_' + i + '_2',
+                player: 'autobot_' + i + '_3',
                 stage: curStage,
                 isBot: true,
                 done: true

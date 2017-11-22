@@ -379,12 +379,16 @@ function sendPlayersResults(pid, bars, position, payoff, compatibility) {
     var finalBars;
 
     // Skip bots.
-    if (pid.substr(0, 8) === 'autobot_') return;
+    if (isBot(pid)) return;
     
     finalBars = [ bars, position, payoff, compatibility ];
     // Store it here in case of disconnection.
     node.game.savedResults[pid] = finalBars;
     node.say('results', pid, finalBars);
+}
+
+function isBot(pid) {
+    return pid.substr(0, 8) === 'autobot_';
 }
 
 /**
@@ -460,7 +464,7 @@ treatments.exo_perfect = {
 
         currentStage = node.game.getCurrentGameStage();
         previousStage = node.game.plot.previous(currentStage);
-
+debugger
         receivedData = node.game.memory.stage[previousStage]
             .selexec('contribution');
         
@@ -474,8 +478,9 @@ treatments.exo_perfect = {
                 ++newSize;
             }
             o[c.player] = c;
-            // Add group (might be null the first repetition).
-            c.group = node.game.pl.id.get(c.player).group;
+            if (!isBot(c.player)) {
+                c.group = node.game.pl.id.get(c.player).group;
+            }
         }
         if (newSize !== receivedData.length) {
             var newDb = [];

@@ -246,18 +246,6 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 }
             }
         };
-
-        
-        // node.on.data('notEnoughPlayers', function(msg) {
-        //     // Not yet 100% safe. Some players could forge the from field.
-        //     if (msg.from !== '[ADMIN_SERVER]') return;
-        // 
-        //     node.game.pause();
-        //     W.lockScreen('One player disconnected. We are now waiting to ' +
-        //                  'see if he or she reconnects. If not, the game ' +
-        //                  'will continue with fewer players.');
-        // });
-        
         
         node.on('SOCKET_DISCONNECT', function() {
             // Disabled.
