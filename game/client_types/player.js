@@ -119,7 +119,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             barsDiv.innerHTML = '';
 
             bars = W.getFrameWindow().bars;
-            debugger;
+
             for (i = 0; i < barsValues[0].length; i++) {
                 group = barsValues[0][i];
                 div = document.createElement('div');
