@@ -161,7 +161,7 @@ function sendPlayersResults(pid, bars, position, payoff) {
 
     // Skip bots.
     if (isBot(pid)) return;
-    
+
     finalBars = [ bars, position, payoff ];
     // Store it here in case of disconnection.
     node.game.savedResults[pid] = finalBars;
@@ -190,7 +190,9 @@ function storePayoffInRegistry(p, gain) {
 function finalizeRound(currentStage, bars, groupStats, groups, ranking) {
 
     var i, len, j, lenJ, contribObj;
-    var pId, positionInRank, playerPayoff;
+    var pId, positionInRank, playerPayoff, playerBars;
+
+    // TODO: store/save also groupStats?
 
     // Save the results for each player, and notify him.
     i = -1, len = groups.length;
@@ -207,8 +209,16 @@ function finalizeRound(currentStage, bars, groupStats, groups, ranking) {
             playerPayoff = getPayoff(bars, positionInRank);
             
             storePayoffInRegistry(pId, playerPayoff);
-            
-            sendPlayersResults(pId, bars, positionInRank, playerPayoff);
+
+            debugger
+            if (settings.SHOW_ALL_GROUPS) {
+                playersBars = bars;
+            }
+            else {
+                playerBars = [ bars[i] ];
+                positionInRank = [ 0, j ];
+            }
+            sendPlayersResults(pId, playerBars, positionInRank, playerPayoff);
         }
     }
 }

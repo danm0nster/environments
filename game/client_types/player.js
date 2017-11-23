@@ -112,16 +112,14 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             // 2: payoff
 
             groupNames = node.game.settings.GROUP_NAMES;
-
-            console.log(barsValues);
-
+            
             barsDiv = W.getElementById('barsResults');
             payoffSpan = W.getElementById('payoff');
 
             barsDiv.innerHTML = '';
 
             bars = W.getFrameWindow().bars;
-
+            debugger;
             for (i = 0; i < barsValues[0].length; i++) {
                 group = barsValues[0][i];
                 div = document.createElement('div');

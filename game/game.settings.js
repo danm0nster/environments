@@ -38,6 +38,10 @@ module.exports = {
     GROUP_ACCOUNT_DIVIDER: 2,
     INITIAL_COINS: 20,
 
+    // If TRUE the results from all groups are shown to everybody,
+    // otherwise only within group.
+    SHOW_ALL_GROUPS: false,
+    
     // Divider ECU / DOLLARS *
     EXCHANGE_RATE: 0.001,
 
