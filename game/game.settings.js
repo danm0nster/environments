@@ -37,6 +37,7 @@ module.exports = {
     // Payment settings. *
     GROUP_ACCOUNT_DIVIDER: 2,
     INITIAL_COINS: 20,
+    MARGINAL_PER_CAPITA_RETURN: 1.5,
 
     // If TRUE the results from all groups are shown to everybody,
     // otherwise only within group.

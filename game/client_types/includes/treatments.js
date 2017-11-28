@@ -24,6 +24,8 @@ var treatments = {};
 module.exports = treatments;
 
 var GROUP_ACCOUNT_DIVIDER = settings.GROUP_ACCOUNT_DIVIDER;
+var MARGINAL_PER_CAPITA_RETURN = settings.MARGINAL_PER_CAPITA_RETURN;
+
 
 // Number of coins for each player at the beginning of each round
 var INITIAL_COINS = settings.INITIAL_COINS;
@@ -68,7 +70,7 @@ function getPayoff(bars, position) {
     var payoff, group;
     group = bars[position[0]];
     payoff = group.reduce(computeGroupAccount, 0);
-    payoff = payoff / GROUP_ACCOUNT_DIVIDER;
+    payoff = payoff * MARGINAL_PER_CAPITA_RETURN / GROUP_ACCOUNT_DIVIDER;
     payoff = INITIAL_COINS - group[position[1]][0] + payoff;
     return payoff;
 }
