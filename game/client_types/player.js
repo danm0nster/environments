@@ -211,29 +211,25 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         init: function() {
             this.quizStuff = {
                 // Coins.
-                coins: 'How many coins do you get each of the 20 rounds ?',
-                coinsChoices: [ 20, 10, 5, 'Other' ],
-                coinsCorrect: 0,
+                coins: 'How many coins do you get in each round?',
+                coinsChoices: [ 20, 100, 10, 'Other' ],
+                coinsCorrect: 1,
                 // Lowest Pay.
-                lowestPay: 'If you put 5 in the group account, what is the ' +
+                lowestPay: 'If you put 40 coins in the group account, what is the ' +
                     'lowest payment you are guaranteed from this round ?',
-                lowestPayChoices: [ 5, 7.5, 10, 'Other' ],
-                lowestPayCorrect: 1,
+                lowestPayChoices: [ 115, 120, 75, 'Other' ],
+                lowestPayCorrect: 2,
                 // Guarantee Pay.
-                guaranteePay: 'If you put 5 in the group account, and all ' +
+                guaranteePay: 'If you put 30 coins in the group account, and all ' +
                     'others do the same, how much are you guaranteed from ' +
                     'this round ?',
-                guranteePayChoices: [ 7.5, 15, 20, 'Other' ],
+                guaranteePayChoices: [ 145, 115, 82, 'Other' ],
                 guaranteePayCorrect: 1,
-                // Likelyness.
-                likely: 'Are you more likely to be matched in a group with ' +
-                    'other high-contributers if you also put in a large ' +
-                    'amount than if you put in only a small amount ?',
-                likelyChoices: [
-                    'Yes', 'No', 'Other',
-                    [ 'true if&lt;5, false if&gt;5', '5' ]
-                ],
-                likelyCorrect: 0
+                // Group composition.
+                maxPay: 'What is the highest number of coins you can get ' +
+                    'paid in a round?',
+                maxPayChoices: [ 150, 400, 212.50, 'Other'],
+                maxPayCorrect: 2
             };
         },
         cb: function() {
@@ -272,7 +268,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         id: 'leastGuarantee',
                         shuffleChoices: true,
                         title: false,
-                        choices: qs.guranteePayChoices,
+                        choices: qs.guaranteePayChoices,
                         correctChoice: qs.guaranteePayCorrect,
                         mainText: qs.guaranteePay
                     }),
@@ -280,9 +276,9 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                         id: 'likeliness',
                         shuffleChoices: true,
                         title: false,
-                        choices: qs.likelyChoices,
-                        correctChoice: qs.likelyCorrect,
-                        mainText: qs.likely
+                        choices: qs.maxPayChoices,
+                        correctChoice: qs.maxPayCorrect,
+                        mainText: qs.maxPay
                     })
                 ]
             });
