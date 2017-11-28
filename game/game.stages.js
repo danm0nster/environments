@@ -18,6 +18,9 @@ module.exports = function(stager, settings) {
         .next('questionnaire')
         .next('end')
         .gameover();
+        // .repeat('hitrust', settings.REPEAT)
+        // .repeat('game', settings.REPEAT)
+        // .repeat('lotrust', settings.REPEAT)
 
     
     stager.extendStage('game', {

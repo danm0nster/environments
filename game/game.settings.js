@@ -72,7 +72,7 @@ module.exports = {
     },
 
     // DEBUG.
-    DEBUG: false,
+    DEBUG: true,
 
     // AUTO-PLAY.
     AUTO: false,
@@ -90,7 +90,6 @@ module.exports = {
     instrPage: 'instructions_standard.html',
 
     treatments: {
-
         HiLo: {
             trustOrder: ['Hi', 'Lo']
         },

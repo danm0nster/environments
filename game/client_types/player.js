@@ -486,6 +486,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             node.on.data('WIN', function(msg) {
                 var win, exitcode, codeErr;
                 codeErr = 'ERROR (code not found)';
+                // TODO: Print the correct win. Wrong value sent from logic.js
                 win = msg.data && msg.data.win || 0;
                 exitcode = msg.data && msg.data.exitcode || codeErr;
                 W.setInnerHTML('bonus', 'Your bonus in this game is: ' + win);
