@@ -179,7 +179,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
     function groupWithPlayers() {
         var counter, gid;
         gid = -1;
-        counter = -1
+        counter = -1;
         node.game.pl.each(function(p) {
             // 4 Players together.
             if (++counter % node.game.settings.SUBGROUP_SIZE === 0) gid++;
