@@ -301,6 +301,9 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             // Show summary previous round.
             node.game.displaySummaryPrevRound();
 
+            // Set the number of coins
+            W.setInnerHTML('initialCoins', node.game.settings.INITIAL_COINS);
+
             // Clear previous errors.
             W.setInnerHTML('divErrors', '');
 

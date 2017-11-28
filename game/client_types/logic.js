@@ -151,7 +151,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             // 3 Bots per group.
             db.insert({
                 group: i,
-                contribution: J.randomInt(-1, 20),
+                contribution: J.randomInt(-1, 100),
                 player: 'autobot_' + i + '_1',
                 stage: curStage,
                 isBot: true,
@@ -159,7 +159,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             });
             db.insert({
                 group: i,
-                contribution: J.randomInt(-1, 20),
+                contribution: J.randomInt(-1, 100),
                 player: 'autobot_' + i + '_2',
                 stage: curStage,
                 isBot: true,
@@ -167,7 +167,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             });
             db.insert({
                 group: i,
-                contribution: J.randomInt(-1, 20),
+                contribution: J.randomInt(-1, 100),
                 player: 'autobot_' + i + '_3',
                 stage: curStage,
                 isBot: true,

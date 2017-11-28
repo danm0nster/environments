@@ -8,44 +8,56 @@
     <h1>Instructions. Please read them carefully.</h1>
     <div id="instructions">
       <div id="exo_perfect">
-        <p>Welcome to our experiment! 16 people, that is you and 15 others, have joined us.</p>
+        <p>Welcome to our
+          game! <span id="players-count">X</span> people, that is
+          you and <span id="players-count-minus-1">X-1</span> others,
+          have joined us.</p>
 
-        <p><strong>Your decision.</strong><br />You will receive 20 coins per round for 20 rounds. Each round, you will have to choose how many coins to put directly into your personal account, and how many coins to put into a group account.</p>
+        <p><strong>Your decision.</strong><br /> You will
+          receive <strong>100</strong> coins per round
+          for <span id="rounds-count">X</span> rounds. Each round, you
+          will have to choose how many coins to put directly into your
+          personal account, and how many coins to put into a group
+          account.</p>
 
-        <p><strong>Ordered group matching.</strong><br />Each round you will be assigned to a new group of 4 people, that is, you and three (possibly different) others. Which group you are assigned to depends on your and others contributions to the group account.</p>
+        <p><strong>Return from personal account.</strong><br /> Each
+          coin that you put into your personal account each round goes
+          one-to-one towards your final earnings in the game.</p>
 
-        <p>All contributions will be ranked from 1 to 16 on a list from highest contribution to lowest contribution. The first 4 people in the list form Group 1, the next 4 people in the list form Group 2, the third 4 people in the list form Group 3, and the last 4 people form Group 4.</p>
+        <p><strong>You will play in groups of four.</strong><br /> You
+          will always play in a group of four, and you will be told when
+          the group composition changes. Unless otherwise noted you will
+          therefore play with the same players as in the previous round.</p>
 
-        <p>In case two or more players contributed equally in the same round, their relative position in the ranking will be decided randomly.</p>
+        <p><strong>Return from group account.</strong><br /> Each coin
+          that you and the other players in your group put into the group account
+          will be summed up and multiplied by 1.5 to give the group account total.
+          This total will be divided equally between the players in each group.</p>
 
-        <p><strong>Return from personal account.</strong><br /> Each coin that you put into your personal account each round goes one-to-one towards your final earnings in the game.</p>
-
-        <p><strong>Return from group account.</strong><br /> Each coin that you put into the group account will pay you back some positive amount of money as described below.</p>
-
-        <p>The total amount of coins in your group account is equal to the sum of the contributions to the group account by each of the group members. That amount is then multiplied by 2 and distributed equally amongst group members. In other words, you will get a return equal to half of the group account total.</p>
-
-        <table class="table table-striped">
+        <table class="table table-striped" style="max-width: 300px">
           <thead>
-            <tr>
-              <th>Total number of coins in your group</th><th>Your return</th>
-            </tr>
+          <tr>
+            <th>Number of coins put in group account</th><th>Group account total</th><th>Your return</th>
+          </tr>
           </thead>
           <tbody>
-            <tr><td>0</td><td>0</td></tr>
-            <tr><td>10</td><td>5</td></tr>
-            <tr><td>15</td><td>7.5</td></tr>
-            <tr><td>28</td><td>14</td></tr>
-            <tr><td>...</td><td>...</td></tr>
-            <tr><td>80</td><td>40</td></tr>
+          <tr><td>0</td><td>0</td><td>0</td></tr>
+          <tr><td>20</td><td>30</td><td>7.5</td></tr>
+          <tr><td>40</td><td>60</td><td>15</td></tr>
+          <tr><td>50</td><td>75</td><td>18.75</td></tr>
+          <tr><td>...</td><td>...</td><td>...</td></tr>
           </tbody>
           <tfoot>
-            <tr><th>Any amount</th><th>Half of that amount</th></tr>
+          <tr><th>Sum</th><th>Total = 1.5 * Sum</th><th>Total / 4</th></tr>
           </tfoot>
         </table>
 
-        <p><strong>Total return.</strong><br />You will be paid according to the final amount of coins earned over the whole experiment. 20 coins are equal to 0.075 USD, and the maximum amount you can win is 800 coins, equivalent to 3 USD.</p>
-
+        <p><strong>Total return.</strong><br />The total return for
+          you in this game is equal to the total amount of coins earned
+          over all the rounds of the game.</p>
       </div>
     </div>
+    If you understood the instructions  press the Done
+    button to proceed to the game.
   </div>
 </body>
