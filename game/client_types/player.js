@@ -125,7 +125,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 div = document.createElement('div');
                 div.classList.add('groupContainer');
                 groupHeader = document.createElement('h4');
-                groupHeaderText = 'Group ' + groupNames[i];
+                groupHeaderText = 'Your group'; //'Group ' + groupNames[i];
                 
                 groupHeader.innerHTML = groupHeaderText;
                 barsDiv.appendChild(div);
@@ -148,7 +148,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     // This is the DIV actually containing the bar
                     subdiv = document.createElement('div');
                     div.appendChild(subdiv);
-                    bars.createBar(subdiv, player[0], 20, color[0], text);
+                    bars.createBar(subdiv, player[0], COINS, color[0], text);
                 }
             }
 
