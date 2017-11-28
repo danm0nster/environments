@@ -35,7 +35,7 @@ module.exports = {
     SUBGROUP_SIZE: 4,
 
     // Payment settings. *
-    GROUP_ACCOUNT_DIVIDER: 2,
+    GROUP_ACCOUNT_DIVIDER: 4,
     INITIAL_COINS: 100,
     MARGINAL_PER_CAPITA_RETURN: 1.5,
 
@@ -44,7 +44,7 @@ module.exports = {
     SHOW_ALL_GROUPS: false,
     
     // Divider ECU / DOLLARS *
-    EXCHANGE_RATE: 0.001,
+    EXCHANGE_RATE: 0.01333,
 
     TIMER: {
         instructions: 90000,
