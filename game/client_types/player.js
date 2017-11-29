@@ -54,10 +54,12 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
                 if (checkResults.errContrib) {
                     if (!node.game.oldContrib) {
-                        contrib = JSUS.randomInt(-1, 20);
+                        contrib = JSUS.randomInt(-1, COINS);
                     }
                     else {
-                        contrib = node.game.oldContrib;
+                        // NOTE: It also makes a random choice here.
+                        // contrib = node.game.oldContrib;
+                        contrib  = JSUS.randomInt(-1, COINS);
                     }
                     errorC = document.createElement('p');
                     errorC.innerHTML = 'Your contribution was set to ' +contrib;
