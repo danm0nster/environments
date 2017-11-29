@@ -397,6 +397,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 title: false,
                 feedback: false,
                 exitCode: false,
+                totalWinCurrency: 'DKK',
                 email: false
             }
         }
