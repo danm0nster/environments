@@ -80,9 +80,10 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         init: function() {
             var curStage, stageRepetition;
 
-            // It assumes 4 stage-treatments played one after another.
+            // It assumes 4 stage-treatments played one after another,
+            // with an information stage between game stages.
             curStage = node.game.getCurrentGameStage();
-            stageRepetition = curStage.stage - node.game.firstStage;
+            stageRepetition = (curStage.stage - node.game.firstStage) / 2;
             // Save a reference, so it is accessible by other functions.
             this.stageRepetition = stageRepetition;
 

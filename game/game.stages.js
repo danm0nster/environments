@@ -19,11 +19,11 @@ module.exports = function(stager, settings) {
         .repeat('game', settings.REPEAT)
         .step('bid')
         .step('results')
-    
+        .next('information')
         .repeat('game AS game_with_bots', settings.REPEAT)
-    
+        .next('information AS info2')
         .repeat('game AS game_with_bots2', settings.REPEAT)
-
+        .next('information AS info3')
         .repeat('game AS game_final', settings.REPEAT)
     
         .next('questionnaire')

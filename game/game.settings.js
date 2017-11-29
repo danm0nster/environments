@@ -62,6 +62,7 @@ module.exports = {
             if (round < 3) return 50000;
             return 30000;
         },
+        information: 30000,
         questionnaire: 45000
     },
 
@@ -72,6 +73,7 @@ module.exports = {
     bidderPage:  'bidder.html',
     resultsPage: 'results.html',
     quizPage: 'quiz_random.html',
+    informationPage: 'information.html',
 
     treatments: {
 

@@ -343,6 +343,10 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         }
     });
 
+    stager.extendStep('information', {
+        frame: settings.informationPage
+    });
+
     stager.extendStep('questionnaire', {
         frame: 'postgame.html',
         widget: {
