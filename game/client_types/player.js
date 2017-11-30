@@ -30,9 +30,9 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         frame = W.generateFrame();
 
         // Add widgets.
-        this.visualRound = node.widgets.append('VisualRound', header, {
-            title: false
-        });
+        // this.visualRound = node.widgets.append('VisualRound', header, {
+        //     title: false
+        // });
         this.visualTimer = node.widgets.append('VisualTimer', header);
         this.doneButton = node.widgets.append('DoneButton', header);
 

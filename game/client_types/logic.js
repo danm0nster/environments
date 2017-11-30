@@ -92,8 +92,10 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 groupWithPlayers();
             }
             else if (stageRepetition === 1 || stageRepetition === 3) {
-                this.playWithBots = true;
-                groupWithBots();
+                // TODO: Reinstate bots for experiment
+                // this.playWithBots = true;
+                // groupWithBots();
+                groupWithPlayers();
             }
         },
         cb: function() {

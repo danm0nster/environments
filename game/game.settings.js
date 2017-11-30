@@ -21,10 +21,10 @@ module.exports = {
 
     // Numnber of game rounds repetitions.
     // TODO: if the value is changed the QUIZ page needs to be updated.
-    REPEAT: 1,
+    REPEAT: 15,
 
     // Minimum number of players that must be always connected.
-    MIN_PLAYERS: 4,
+    MIN_PLAYERS: 12,
 
     GROUP_NAMES: [
         '1', '2', '3', '4', '5', '6', '7', '8',
@@ -43,8 +43,8 @@ module.exports = {
     // otherwise only within group.
     SHOW_ALL_GROUPS: false,
     
-    // Divider ECU / DOLLARS *
-    EXCHANGE_RATE: 0.01333,
+    // Divider ECU / DKK *
+    EXCHANGE_RATE: 0.0157,
 
     TIMER: {
         instructions: 90000,
