@@ -47,8 +47,8 @@ module.exports = {
     EXCHANGE_RATE: 0.0157,
 
     TIMER: {
-        instructions: 90000,
-        quiz: 90000,
+        instructions: 3*60*1000,
+        quiz: 2.5*60*1000,
         bid: function() {
             var round;
             round = this.getCurrentGameStage().round;
