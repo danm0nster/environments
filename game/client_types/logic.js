@@ -95,6 +95,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 // TODO: Reinstate bots for experiment
                 // this.playWithBots = true;
                 // groupWithBots();
+                this.playWithBots = false
                 groupWithPlayers();
             }
         },
@@ -181,12 +182,16 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
     function groupWithPlayers() {
         var counter, gid;
+        var groups = [1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3];
+
+        // groups = shuffle(groups);
         gid = -1;
         counter = -1;
         node.game.pl.each(function(p) {
             // 4 Players together.
-            if (++counter % node.game.settings.SUBGROUP_SIZE === 0) gid++;
-            p.group = gid;
+            // if (++counter % node.game.settings.SUBGROUP_SIZE === 0) gid++;
+            // p.group = gid;
+            p.group = groups[++counter];
         });
     }
 
@@ -197,5 +202,23 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             // Each player with BOTS.
             p.group = ++counter;
         });
+    }
+
+    function shuffle(array) {
+        var currentIndex = array.length, temporaryValue, randomIndex;
+
+        // While there remain elements to shuffle...
+        while (0 !== currentIndex) {
+
+            // Pick a remaining element...
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex -= 1;
+
+            // And swap it with the current element.
+            temporaryValue = array[currentIndex];
+            array[currentIndex] = array[randomIndex];
+            array[randomIndex] = temporaryValue;
+        }
+        return array;
     }
 };
