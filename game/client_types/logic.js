@@ -92,11 +92,10 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 groupWithPlayers();
             }
             else if (stageRepetition === 1 || stageRepetition === 3) {
-                // TODO: Reinstate bots for experiment
-                // this.playWithBots = true;
-                // groupWithBots();
-                this.playWithBots = false
-                groupWithPlayers();
+                this.playWithBots = true;
+                groupWithBots();
+                // this.playWithBots = false
+                // groupWithPlayers();
             }
         },
         cb: function() {
@@ -182,9 +181,9 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
     function groupWithPlayers() {
         var counter, gid;
-        var groups = [1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3];
+        var groups = [0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2];
 
-        // groups = shuffle(groups);
+        groups = shuffle(groups);
         gid = -1;
         counter = -1;
         node.game.pl.each(function(p) {
