@@ -87,11 +87,11 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             // Save a reference, so it is accessible by other functions.
             this.stageRepetition = stageRepetition;
 
-            if (stageRepetition === 0 || stageRepetition === 2) {
+            if (stageRepetition === 1 || stageRepetition === 3) {
                 this.playWithBots = false;
                 groupWithPlayers();
             }
-            else if (stageRepetition === 1 || stageRepetition === 3) {
+            else if (stageRepetition === 0 || stageRepetition === 2) {
                 this.playWithBots = true;
                 groupWithBots();
                 // this.playWithBots = false
