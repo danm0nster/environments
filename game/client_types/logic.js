@@ -100,7 +100,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         },
         cb: function() {
             // Add bots contributions.
-            if (this.playWithBots) addBotContributions();            
+            if (this.playWithBots) addBotContributions(this.stageRepetition);
         }
     });
 
@@ -140,12 +140,21 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
     // Helper functions.
 
-    function addBotContributions() {
+    function addBotContributions(stageRepetition) {
         var i, nGroups;
         var db, curStage;
+        var minBid, maxBid;
 
         db = node.game.memory;
-        curStage = node.game.getCurrentGameStage()
+        curStage = node.game.getCurrentGameStage();
+
+        if (stageRepetition === 0) {
+            minBid = 60;
+            maxBid = 100;
+        } else if (stageRepetition === 2) {
+            minBid = 0;
+            maxBid = 40;
+        }
         
         i = -1;
         nGroups = node.game.pl.size();
@@ -154,7 +163,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             // 3 Bots per group.
             db.insert({
                 group: i,
-                contribution: J.randomInt(-1, 100),
+                contribution: J.randomInt(minBid-1, maxBid),
                 player: 'autobot_' + i + '_1',
                 stage: curStage,
                 isBot: true,
@@ -162,7 +171,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             });
             db.insert({
                 group: i,
-                contribution: J.randomInt(-1, 100),
+                contribution: J.randomInt(minBid-1, maxBid),
                 player: 'autobot_' + i + '_2',
                 stage: curStage,
                 isBot: true,
@@ -170,7 +179,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             });
             db.insert({
                 group: i,
-                contribution: J.randomInt(-1, 100),
+                contribution: J.randomInt(minBid-1, maxBid),
                 player: 'autobot_' + i + '_3',
                 stage: curStage,
                 isBot: true,
