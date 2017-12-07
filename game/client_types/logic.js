@@ -181,6 +181,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
     function groupWithPlayers() {
         var counter, gid;
+        // TODO: Create this array based on the number of groups in game.settings
         var groups = [0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2];
 
         groups = shuffle(groups);
