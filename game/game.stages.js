@@ -24,6 +24,10 @@ module.exports = function(stager, settings) {
         .next('information AS info2')
         .repeat('game AS game_with_bots2', settings.REPEAT)
         .next('information AS info3')
+        .repeat('game AS game_with_bots3', settings.REPEAT)
+        .next('information AS info4')
+        .repeat('game AS game_with_bots4', settings.REPEAT)
+        .next('information AS info5')
         .repeat('game AS game_final', settings.REPEAT)
     
         .next('questionnaire')

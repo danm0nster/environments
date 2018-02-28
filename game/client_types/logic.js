@@ -87,11 +87,11 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             // Save a reference, so it is accessible by other functions.
             this.stageRepetition = stageRepetition;
 
-            if (stageRepetition === 1 || stageRepetition === 3) {
+            if (stageRepetition === 1 || stageRepetition === 3 ||  stageRepetition === 5) {
                 this.playWithBots = false;
                 groupWithPlayers();
             }
-            else if (stageRepetition === 0 || stageRepetition === 2) {
+            else if (stageRepetition === 0 || stageRepetition === 2 || stageRepetition === 4) {
                 this.playWithBots = true;
                 groupWithBots();
                 // this.playWithBots = false
@@ -149,11 +149,14 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         curStage = node.game.getCurrentGameStage();
 
         if (stageRepetition === 0) {
-            minBid = 60;
-            maxBid = 100;
-        } else if (stageRepetition === 2) {
             minBid = 0;
             maxBid = 40;
+        } else if (stageRepetition === 2) {
+            minBid = 30;
+            maxBid = 70;
+        } else if (stageRepetition === 4) {
+            minBid = 60;
+            maxBid = 100;
         }
         
         i = -1;
