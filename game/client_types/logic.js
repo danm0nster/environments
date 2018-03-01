@@ -92,10 +92,13 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 groupWithPlayers();
             }
             else if (stageRepetition === 0 || stageRepetition === 2 || stageRepetition === 4) {
-                this.playWithBots = true;
-                groupWithBots();
-                // this.playWithBots = false
-                // groupWithPlayers();
+                if (node.game.settings.CONDITION === 'control') {
+                    this.playWithBots = false;
+                    groupWithPlayers();
+                } else {
+                    this.playWithBots = true;
+                    groupWithBots();
+                }
             }
         },
         cb: function() {
@@ -144,19 +147,26 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         var i, nGroups;
         var db, curStage;
         var minBid, maxBid;
+        var intervals;
 
         db = node.game.memory;
         curStage = node.game.getCurrentGameStage();
 
+        if (node.game.settings.CONDITION === 'HML') {
+            intervals = [60, 100, 30, 70, 0, 40];
+        } else if (node.game.settings.CONDITION === 'LMH') {
+            intervals = [0, 40, 30, 70, 60, 100];
+        }
+
         if (stageRepetition === 0) {
-            minBid = 0;
-            maxBid = 40;
+            minBid = intervals[0];
+            maxBid = intervals[1];
         } else if (stageRepetition === 2) {
-            minBid = 30;
-            maxBid = 70;
+            minBid = intervals[2];
+            maxBid = intervals[3];
         } else if (stageRepetition === 4) {
-            minBid = 60;
-            maxBid = 100;
+            minBid = intervals[4];
+            maxBid = intervals[5];
         }
         
         i = -1;

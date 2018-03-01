@@ -19,7 +19,10 @@ module.exports = {
 
     // Variables shared by all treatments.
 
-    // Numnber of game rounds repetitions.
+    // Set the experimental condition. Choose one of 'HML', 'LMH', 'control'
+    CONDITION: 'HML',
+
+    // Number of game rounds repetitions.
     // TODO: if the value is changed the QUIZ page needs to be updated.
     REPEAT: 10,
 
