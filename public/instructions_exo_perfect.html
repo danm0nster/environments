@@ -5,39 +5,52 @@
 <link rel="stylesheet" href="css/instructions.css" />
 <body>
   <div id="central-container">
-    <h1>Instructions. Please read them carefully.</h1>
+    <h1>Læs disse intruktioner grundigt</h1>
     <div id="instructions">
       <div id="exo_perfect">
-        <p>Welcome to our
-          game! <span id="players-count">X</span> people, that is
-          you and <span id="players-count-minus-1">X-1</span> others,
-          have joined us.</p>
+        <p>Velkommen til vores spil! I alt <span id="players-count">X</span> elever fra din klasse, dvs.
+          du og <span id="players-count-minus-1">X-1</span> andre,
+          er med i dette spil. I vil blive delt op i grupper på fire elever og du spiller kun med de andre
+          i din gruppe. Det er tilfældigt hvem du kommer i gruppe med. I gruppen skal I spille et spil i
+          flere runder.</p>
 
-        <p><strong>Your decision.</strong><br /> You will
-          receive <strong>100</strong> coins per round
-          for <span id="rounds-count">X</span> rounds. Each round, you
-          will have to choose how many coins to put directly into your
-          personal account, and how many coins to put into a group
-          account.</p>
+          <p><strong>Ikke rigtige penge</strong><br />
+            I det rigtige eksperiment som dette er en tro kopi af spilles der om
+            rigtige penge, men i dag får I (desværre) ikke penge for at være med.
+          </p>
 
-        <p><strong>Return from personal account.</strong><br /> Each
-          coin that you put into your personal account each round goes
-          one-to-one towards your final earnings in the game.</p>
+        <p><strong>Du skal foretage et valg.</strong><br /> I hver runde af
+          spillet vil du modtage <strong>100</strong> mønter. Der er i alt
+          <span id="rounds-count">X</span> runder i spillet. I hver runde skal du
+          vælge hvor mange mønter du vil beholde for sig selv, og hvor mange du sætter
+          ind på en fælles konto for din gruppe.</p>
 
-        <p><strong>You will play in groups of four.</strong><br /> You
-          will always play in a group of four, and you will be told when
-          the group composition changes. Unless otherwise noted you will
-          therefore play with the same players as in the previous round.</p>
+        <p><strong>Det du beholder.</strong><br /> De mønter du beholder
+          vil de andre ikke få del i. Dem er du altså sikker på at beholde som
+          en del af din fortjeneste.
+          </p>
 
-        <p><strong>Return from group account.</strong><br /> Each coin
-          that you and the other players in your group put into the group account
-          will be summed up and multiplied by 1.5 to give the group account total.
-          This total will be divided equally between the players in each group.</p>
+          <p><strong>Det du sætter ind på den fælles konto.</strong><br /> Hver mønt, som du
+            og de andre i din gruppe sætter ind på den fælles gruppekonto bliver lagt sammen.
+            Når alle i gruppen har besluttet hvor meget de vil sætte ind på den fælles konto
+            bliver det samlede beløb ganget med 1,5. Hvis I fx har sat 100 mønter ind i alt,
+            bliver der altså 150 mønter, som I får til deling. Alle får lige meget, uanset hvor
+            meget I hver især har sat ind. I får altså hver en fjerdedel af det samelede beløb efter
+            der er gange med 1,5. Dette lægges til det antal mønter du har beholdt og tilsammen er
+            det din samlede fortjeneste i den runde af spillet.</p>
+
+        <p><strong>Grupper på fire.</strong><br /> Du spiller altid som en
+          del af en gruppe på fire. Med mindre du får andet at vide, laves der
+          ikke om på grupperne. Du spiller altså sammen med de samme tre personer
+          indtil du får andet at vide.</p>
+
+          <p>I tabellen herunder kan du se eksempler på hvor meget du får tilbage fra den
+            fælles konto</p>
 
         <table class="table table-striped" style="max-width: 300px">
           <thead>
           <tr>
-            <th>Number of coins put in group account</th><th>Group account total</th><th>Your return</th>
+            <th>Antal mønter I giver til den fælles konto</th><th>Efter der ganges med 1,5</th><th>Din andel</th>
           </tr>
           </thead>
           <tbody>
@@ -46,18 +59,19 @@
           <tr><td>40</td><td>60</td><td>15</td></tr>
           <tr><td>50</td><td>75</td><td>18.75</td></tr>
           <tr><td>...</td><td>...</td><td>...</td></tr>
+          <tr><td>400</td><td>600</td><td>150</td></tr>
           </tbody>
           <tfoot>
-          <tr><th>Sum</th><th>Total = 1.5 * Sum</th><th>Total / 4</th></tr>
+          <tr><th>Sum</th><th>Total = 1,5 * Sum</th><th>Total / 4</th></tr>
           </tfoot>
         </table>
 
-        <p><strong>Total return.</strong><br />The total return for
-          you in this game is equal to the total amount of coins earned
-          over all the rounds of the game.</p>
+        <p><strong>Dit samlede resultat.</strong><br />Dit samlede resultat for hele spillet
+          er alle de mønter du tjener i de enkelte runder af spillet tilsammen. Computeren lægger
+          alle tallene sammen, og viser dig til sidste hvor meget du kunne have tjent.</p>
       </div>
     </div>
-    If you understood the instructions  press the Done
-    button to proceed to the game.
+    Hvis du har forstået instruktionerne skal du klikke på Done
+    knappen for at komme videre til spillet.
   </div>
 </body>

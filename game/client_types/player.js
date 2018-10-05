@@ -8,7 +8,7 @@
  */
 
 module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
-    
+
     // Variable here are available to all stages.
     stager.setDefaultGlobals({
         // Total number of players in group.
@@ -39,7 +39,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         this.isValidContribution = function(n) {
             return false !== J.isInt(n, -1, (COINS + 1));
         };
-        
+
         // Takes in input the results of _checkInputs_ and correct eventual
         // mistakes. If in the first round a random value is chosen, otherwise
         // the previous decision is repeated. It also updates the screen.
@@ -90,8 +90,8 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
             if (!node.game.isValidContribution(contrib)) {
                 errorC = document.createElement('p');
-                errorC.innerHTML = 'Invalid contribution. ' +
-                    'Please enter a number between 0 and ' + COINS;
+                errorC.innerHTML = 'Ugyldigt valg. ' +
+                    'Du skal vælge et tal mellem 0 og ' + COINS;
                 divErrors.appendChild(errorC);
             }
 
@@ -114,7 +114,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             // 2: payoff
 
             groupNames = node.game.settings.GROUP_NAMES;
-            
+
             barsDiv = W.getElementById('barsResults');
             payoffSpan = W.getElementById('payoff');
 
@@ -127,8 +127,8 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 div = document.createElement('div');
                 div.classList.add('groupContainer');
                 groupHeader = document.createElement('h4');
-                groupHeaderText = 'Your group'; //'Group ' + groupNames[i];
-                
+                groupHeaderText = 'Din gruppe'; //'Group ' + groupNames[i];
+
                 groupHeader.innerHTML = groupHeaderText;
                 barsDiv.appendChild(div);
                 div.appendChild(groupHeader);
@@ -139,7 +139,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                     // It is me?
                     if (barsValues[1][0] === i && barsValues[1][1] === j) {
                         color = [ undefined, '#9932CC' ];
-                        text = ' YOU <img src="imgs/arrow.jpg" ' +
+                        text = ' Dig <img src="imgs/arrow.jpg" ' +
                             'style="height:15px;"/>';
                     }
                     else {
@@ -180,7 +180,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
                 W.setInnerHTML('yourPayoff', node.game.oldPayoff);
             }
         };
-        
+
         node.on('SOCKET_DISCONNECT', function() {
             // Disabled.
             return;
@@ -213,24 +213,24 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
         init: function() {
             this.quizStuff = {
                 // Coins.
-                coins: 'How many coins do you get in each round?',
-                coinsChoices: [ 20, 100, 10, 'Other' ],
+                coins: 'Hvor mange mønter får du i hver runde?',
+                coinsChoices: [ 20, 100, 10, 'Andet' ],
                 coinsCorrect: 1,
                 // Lowest Pay.
-                lowestPay: 'If you put 40 coins in the group account, what is the ' +
-                    'lowest payment you are guaranteed from this round ?',
-                lowestPayChoices: [ 115, 120, 75, 'Other' ],
+                lowestPay: 'Hvis du sætter 40 ind på den fælles konto, hvad er så ' +
+                    'det laveste udbytte, som du kan få?',
+                lowestPayChoices: [ 115, 120, 75, 'Andet' ],
                 lowestPayCorrect: 2,
                 // Guarantee Pay.
-                guaranteePay: 'If you put 30 coins in the group account, and all ' +
-                    'others do the same, how much are you guaranteed from ' +
-                    'this round ?',
-                guaranteePayChoices: [ 145, 115, 82, 'Other' ],
+                guaranteePay: 'Hvis du sætter 30 ind på den fælles konto, og alle ' +
+                    'andre gør det samme, hvor stort et udbytte får du så i' +
+                    'denne runde?',
+                guaranteePayChoices: [ 145, 115, 82, 'Andet' ],
                 guaranteePayCorrect: 1,
                 // Group composition.
-                maxPay: 'What is the highest number of coins you can get ' +
-                    'paid in a round?',
-                maxPayChoices: [ 150, 400, 212.50, 'Other'],
+                maxPay: 'Hvad er det højeste antal mønter du kan få som ' +
+                    'udbytte i en runde?',
+                maxPayChoices: [ 150, 400, 212.50, 'Andet'],
                 maxPayCorrect: 2
             };
         },
@@ -311,7 +311,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
 
             // Clear contribution input.
             W.getElementById('contribution').value = '';
-            
+
             console.log('Meritocracy: bid page.');
         },
         done: function() {
