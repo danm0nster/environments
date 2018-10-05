@@ -20,21 +20,21 @@ module.exports = {
     // Variables shared by all treatments.
 
     // Set the experimental condition. Choose one of 'HML', 'LMH', 'control'
-    CONDITION: 'HML',
+    CONDITION: 'control',
 
     // Number of game rounds repetitions.
     // TODO: if the value is changed the QUIZ page needs to be updated.
-    REPEAT: 10,
+    REPEAT: 15,
 
     // Minimum number of players that must be always connected.
-    MIN_PLAYERS: 12,
+    MIN_PLAYERS: 16,
 
     GROUP_NAMES: [
         '1', '2', '3', '4', '5', '6', '7', '8',
         '9', '10', '11', '12', '13', '14', '15', '16'
     ],
 
-    // How many player in each group. *
+    // How many player in each group. *ß
     SUBGROUP_SIZE: 4,
 
     // Payment settings. *
@@ -45,7 +45,7 @@ module.exports = {
     // If TRUE the results from all groups are shown to everybody,
     // otherwise only within group.
     SHOW_ALL_GROUPS: false,
-    
+
     // Divider ECU / DKK *
     EXCHANGE_RATE: 0.0157,
 
