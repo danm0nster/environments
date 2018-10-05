@@ -168,7 +168,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
             minBid = intervals[4];
             maxBid = intervals[5];
         }
-        
+
         i = -1;
         nGroups = node.game.pl.size();
         for ( ; ++i < nGroups ; ) {
@@ -204,7 +204,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
     function groupWithPlayers() {
         var counter, gid;
         // TODO: Create this array based on the number of groups in game.settings
-        var groups = [0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2];
+        var groups = [0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3];
 
         groups = shuffle(groups);
         gid = -1;
@@ -220,7 +220,7 @@ module.exports = function(treatmentName, settings, stager, setup, gameRoom) {
     function groupWithBots() {
         var counter;
         counter = -1;
-        node.game.pl.each(function(p) {            
+        node.game.pl.each(function(p) {
             // Each player with BOTS.
             p.group = ++counter;
         });
