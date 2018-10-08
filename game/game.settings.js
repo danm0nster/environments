@@ -47,7 +47,7 @@ module.exports = {
     SHOW_ALL_GROUPS: false,
 
     // Divider ECU / DKK *
-    EXCHANGE_RATE: 0.0157,
+    EXCHANGE_RATE: 0.007,
 
     TIMER: {
         instructions: 3*60*1000,
